@@ -8,15 +8,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: install dependencies
-      run: sudo apt-get install gcc libexpat-dev libz-dev make
-    - name: configure
-      run: ./configure
+      run: sudo apt-get install -fy gcc libexpat-dev libz-dev make
     - name: make
       run: make newflasher.x64
     - name: Upload a Build Artifact
@@ -25,6 +21,6 @@ jobs:
         # Artifact name
         name: newflasher.x64
         # A file, directory or wildcard pattern that describes what to upload
-        path: newflasher
+        path: newflasher.x64
         if-no-files-found: error # optional, default is warn
         retention-days: 90 # optional
